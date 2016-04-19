@@ -8,7 +8,7 @@ package project.vehicle.management.dto;
 
 public class CarSearchManager {
 	
-	//CarSearchManager -> listCars, searchCars, sortCars
+	//CarSearchManager -> listCars, sortCars
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
