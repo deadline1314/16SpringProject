@@ -1,10 +1,30 @@
 package project.vehicle.management.dto;
 
-import java.util.Collection;
+import java.util.ArrayList;
 
-public class Inventory {
-	
-	private Collection<Car> car;
-	
+public class Inventory
+{
 
+    private ArrayList<Car> myCars;
+
+    private CarDataManager cdm;
+    private CarSearchManager csm;
+
+    public Inventory()
+    {
+        myCars = new ArrayList<Car>();
+        cdm = new CarDataManager(myCars);
+        csm = new CarSearchManager(myCars);
+    }
+
+    public CarDataManager getCarDataManager()
+    {
+        return cdm;
+    }
+
+    public CarSearchManager getCarSearchManager()
+    {
+        return csm;
+    }
 }
+
