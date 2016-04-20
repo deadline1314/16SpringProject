@@ -2,6 +2,14 @@ package project.vehicle.management.dto;
 
 import java.util.ArrayList;
 
+
+/**
+ * 
+ * @author Lei Zhou
+ *
+ */
+
+
 public class Inventory
 {
 
