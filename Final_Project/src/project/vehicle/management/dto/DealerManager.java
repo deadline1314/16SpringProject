@@ -1,4 +1,13 @@
 package project.vehicle.management.dto;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 
  * @author Jia
@@ -7,7 +16,6 @@ package project.vehicle.management.dto;
 
 public class DealerManager {
 	
-	//DealerManager -> listOfDealers
 		// DealerManager -> listOfDealers
 	public List<String> getDealersName(File f) throws IOException {
 		BufferedReader br = null;
