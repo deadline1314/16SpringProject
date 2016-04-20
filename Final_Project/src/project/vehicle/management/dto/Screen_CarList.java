@@ -21,21 +21,21 @@ import javax.swing.JPanel;
  * 
  */
 
+@SuppressWarnings("serial")
 public class Screen_CarList extends JFrame implements ActionListener {
-	
+
 	JButton add;
 	JButton delete;
 	JButton modify;
 	JButton filter;
 	JButton clear;
-	
-	
-	Screen_CarList() {		
+
+	Screen_CarList() {
 		createAddComponents();
 		addListener();
 		makeVisible();
 	}
-	
+
 	private void createAddComponents() {
 		add = new JButton("Add");
 		delete = new JButton("Delete");
@@ -43,14 +43,12 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		filter = new JButton("Filter");
 		clear = new JButton("Reset");
 
-		
 		JPanel filterPanel = new JPanel();
 		JPanel tablePanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(add);
 		buttonPanel.add(delete);
 		buttonPanel.add(modify);
-		
 
 		JLabel fHeading = new JLabel("Filter Cars");
 		JPanel fpanel0 = new JPanel();
@@ -81,7 +79,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 
 		JPanel fpanel4 = new JPanel(new FlowLayout());
 		JLabel flabel4 = new JLabel("Model:");
-		String[] model = new String[] { "Select"};
+		String[] model = new String[] { "Select" };
 		JComboBox<String> fCombo4 = new JComboBox<String>(model);
 
 		fpanel4.add(flabel4);
@@ -89,7 +87,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 
 		JPanel fpanel5 = new JPanel(new FlowLayout());
 		JLabel flabel5 = new JLabel("Type:");
-		String[] type = new String[] { "Select"};
+		String[] type = new String[] { "Select" };
 		JComboBox<String> fCombo5 = new JComboBox<String>(type);
 
 		fpanel5.add(flabel5);
@@ -108,7 +106,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		fpanel7.add(clear);
 
 		filterPanel.setLayout(new BoxLayout(filterPanel, BoxLayout.Y_AXIS));
-		
+
 		filterPanel.add(fpanel0);
 		filterPanel.add(fpanel1);
 		filterPanel.add(fpanel2);
@@ -119,9 +117,9 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		filterPanel.add(fpanel7);
 
 		Table table = new Table();
-		//table.setOpaque(true); 
+		// table.setOpaque(true);
 		tablePanel.add(table);
-		
+
 		this.getContentPane().add(filterPanel, BorderLayout.WEST);
 		this.getContentPane().add(tablePanel, BorderLayout.CENTER);
 		this.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
@@ -129,27 +127,31 @@ public class Screen_CarList extends JFrame implements ActionListener {
 	}
 
 	private void makeVisible() {
-		this.setTitle("Welcome DealerName");
+		this.setTitle("Welcome DealerName"); //screen #1 has function getSelectedName()
 		this.setSize(1500, 1500);
 		this.setVisible(true);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	}
-	
-private void addListener() {
-		
+
+	private void addListener() {
+
 		delete.addActionListener(this);
-		
+
+	}
+
+	public void actionPerformed(ActionEvent ae) {
+		if (ae.getSource() == delete) {
+			JDialog.setDefaultLookAndFeelDecorated(true);
+			JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?", "Confirmation",
+					JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+		}
+
 	}
 	
-	public void actionPerformed(ActionEvent ae) {
-		if(ae.getSource() == delete){
-			JDialog.setDefaultLookAndFeelDecorated(true);
-		    JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?", "Confirmation",
-		        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-		}
-			
+	public void show(){
+		new Screen_CarList();
 	}
 
 	// CarDataManager -> addCar, deleteCar, modifyCar

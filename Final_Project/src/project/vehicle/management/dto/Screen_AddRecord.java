@@ -16,7 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-public class Screen_AddRecord {
+public class Screen_AddRecord extends JFrame{
 	
 	//CarFileManager -> readCars, writeCars
 private static final long serialVersionUID = 1L;
