@@ -5,24 +5,21 @@ package project.vehicle.management.dto;
  * @author Lei Zhou
  *
  */
-enum Condition
-{
-    NEW, USED, CERTIFIED
-}
 
 public class Car
 {
+
     private String VIN;
     private String dealerName;
     private int year;
     private String make;
-    private Condition condition;
+    private String condition;
     private String model;
     private String trim;
     private String type;
     private double price;
 
-    public Car(String VIN, String dealerName, int year, String make, Condition condition, String model, String trim,
+    public Car(String VIN, String dealerName, String condition, int year, String make, String model, String trim,
             String type, double price)
     {
         this.VIN = VIN;
@@ -76,12 +73,12 @@ public class Car
         this.make = make;
     }
 
-    public Condition getCondition()
+    public String getCondition()
     {
         return condition;
     }
 
-    public void setCondition(Condition condition)
+    public void setCondition(String condition)
     {
         this.condition = condition;
     }

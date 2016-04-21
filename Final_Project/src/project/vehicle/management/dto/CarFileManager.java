@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import project.vehicle.management.dto.Car.Condition;
 
 /**
  * 
@@ -41,8 +40,8 @@ public class CarFileManager {
 				if (line == null)
 					break;
 				String[] temp = line.split("~");
-				Car record = new Car(temp[0], temp[1], Integer.parseInt(temp[2]), temp[3], Condition.valueOf(temp[4]),
-						temp[5], temp[6], temp[7], Double.parseDouble(temp[8]));
+				Car record = new Car(temp[0].trim(), temp[1].trim(), temp[2], Integer.parseInt(temp[3].trim()), temp[4].trim(),
+						temp[5].trim(), temp[6].trim(), temp[7].trim(), (double)Double.parseDouble(temp[8].trim()));
 				carList.add(record);
 			}
 			br.close();
@@ -62,8 +61,8 @@ public class CarFileManager {
 	public void writeCars(ArrayList<Car> carList, String file) {
 		ArrayList<String> temp = new ArrayList<String>();
 		for (Car car : carList) {
-			String line = car.getVIN() + "~" + car.getDealerName() + "~" + String.valueOf(car.getYear()) + "~"
-					+ car.getMake() + "~" + String.valueOf(car.getCondition()) + "~" + car.getModel() + "~"
+			String line = car.getVIN() + "~" + car.getDealerName() + "~"+ car.getCondition() + "~" + 
+					String.valueOf(car.getYear()) + "~"+ car.getMake() + "~"  + car.getModel() + "~"
 					+ car.getTrim() + "~" + car.getType() + "~" + String.valueOf(car.getPrice());
 			temp.add(line);
 		}
@@ -84,7 +83,12 @@ public class CarFileManager {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		CarFileManager cfm = new CarFileManager();
+		ArrayList<Car> car;
+		car = cfm.readCars("/Users/workspace/Final_Project/src/project/vehicle/data/gmps-aj-dohmann");
+		for(Car c : car){
+			System.out.println(c);
+		}
 
 	}
 
