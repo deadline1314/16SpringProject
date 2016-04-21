@@ -5,14 +5,13 @@ package project.vehicle.management.dto;
  * @author Lei Zhou
  *
  */
+enum Condition
+{
+    NEW, USED, CERTIFIED
+}
 
 public class Car
 {
-    enum Condition
-    {
-        NEW, USED, CERTIFIED
-    }
-
     private String VIN;
     private String dealerName;
     private int year;
