@@ -66,15 +66,18 @@ public class CarSearchManager
             {
                 dealerCars.remove(k);
                 dealerCars.add(k, tempDealerCars.get(j++));
-            } else if (j > hi)
+            }
+            else if (j > hi)
             {
                 dealerCars.remove(k);
                 dealerCars.add(k, tempDealerCars.get(i++));
-            } else if (less(tempDealerCars.get(j), tempDealerCars.get(i), type))
+            }
+            else if (less(tempDealerCars.get(j), tempDealerCars.get(i), type))
             {
                 dealerCars.remove(k);
                 dealerCars.add(k, tempDealerCars.get(j++));
-            } else
+            }
+            else
             {
                 dealerCars.remove(k);
                 dealerCars.add(k, tempDealerCars.get(i++));
@@ -90,45 +93,59 @@ public class CarSearchManager
             {
                 return true;
             }
-        } else if (type.equals("dealerName"))
+        }
+        else if (type.equals("dealerName"))
         {
             if (car1.getDealerName().compareTo(car2.getDealerName()) < 0)
             {
                 return true;
             }
-        } else if (type.equals("year"))
+        }
+        else if (type.equals("year"))
         {
             if (car1.getYear() < car2.getYear())
             {
                 return true;
             }
-        } else if (type.equals("make"))
+        }
+        else if (type.equals("make"))
         {
             if (car1.getMake().compareTo(car2.getMake()) < 0)
             {
                 return true;
             }
-        } else if (type.equals("model"))
+        }
+        else if (type.equals("model"))
         {
             if (car1.getModel().compareTo(car2.getModel()) < 0)
             {
                 return true;
             }
-        } else if (type.equals("trim"))
+        }
+        else if (type.equals("trim"))
         {
             if (car1.getTrim().compareTo(car2.getTrim()) < 0)
             {
                 return true;
             }
-        } else if (type.equals("type"))
+        }
+        else if (type.equals("type"))
         {
             if (car1.getType().compareTo(car2.getType()) < 0)
             {
                 return true;
             }
-        } else if (type.equals("price"))
+        }
+        else if (type.equals("price"))
         {
             if (car1.getPrice() < car2.getPrice())
+            {
+                return true;
+            }
+        }
+        else if (type.equals(""))
+        {
+            if (car1.getCondition().compareTo(car2.getCondition()) < 0)
             {
                 return true;
             }
