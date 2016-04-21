@@ -150,9 +150,6 @@ public class Screen_CarList extends JFrame implements ActionListener {
 
 	}
 	
-	public void show(){
-		new Screen_CarList();
-	}
 
 	// CarDataManager -> addCar, deleteCar, modifyCar
 	// CarFileManager -> readCars, writeCars
