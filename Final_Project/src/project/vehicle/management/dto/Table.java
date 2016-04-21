@@ -1,73 +1,46 @@
 package project.vehicle.management.dto;
-/**
- * 
- * @author Sana
- *
- */
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.table.AbstractTableModel;
 
-import javax.swing.table.TableColumn;
+public class Table{
 
-public class Table extends JPanel {
+    public static class MyModel extends AbstractTableModel {
 
-	public Table() {
-		super(new GridLayout(1, 0));
+        private ArrayList<Object[]> data;
+    	//List<String>
+    	//private ArrayList<Car> data;
+        private List<String> columnNames;
 
-		JTable table = new JTable(new MyTableModel());
+        public MyModel(List<String> columnNames, ArrayList<Object[]> data) {
+            super();
+            this.columnNames = columnNames;
+            this.data = data;
+        }
 
-		table.setAutoCreateRowSorter(true);
-		table.setPreferredScrollableViewportSize(new Dimension(1200, 900));
-		table.setShowGrid(true);
-		table.setGridColor(Color.lightGray);
-		TableColumn column = table.getColumnModel().getColumn(0);
-		column.setCellEditor(new RadioButton());
-		column.setCellRenderer(new RadioButton());
-		JScrollPane scrollPane = new JScrollPane(table);
-		add(scrollPane);
-	}
-}
+        @Override
+        public int getRowCount() {
+            return data.size();
+        }
 
-class MyTableModel extends AbstractTableModel {
+        @Override
+        public int getColumnCount() {
+            return columnNames.size();
+        //	return columnNames.length();
+        }
 
-	private final String[] columnNames = { "ACTION", "VIN", "CONDITION", "YEAR", "MAKE", "MODEL", "TRIM", "TYPE",
-			"PRICE" };
+        @Override
+        public String getColumnName(int column) {
+            return columnNames.get(column);
+        }
 
-	private Object[][] data = {
-			{ " ", "2354335313", "new", "2015", "Cadillac", "Escalade ESV", "2.0L Turbo I4 RWD Luxury", "SUV",
-					"51127.0" },
-			{ "", "2570378823", "new", "2019", "Cadillac", "CTS Sedan", "RWD Platinum", "CAR", "89884.0" } };
+        @Override
+        public Object getValueAt(int rowIndex, int columnIndex) {
+            return data.get(rowIndex)[columnIndex];
+        }
 
-	public int getColumnCount() {
-		return columnNames.length;
-	}
-
-	public int getRowCount() {
-		return data.length;
-	}
-
-	public String getColumnName(int col) {
-		return columnNames[col];
-	}
-
-	public Object getValueAt(int row, int col) {
-		return data[row][col];
-	}
-
-	public boolean isCellEditable(int row, int col) {
-
-		return true;
-	}
-
-	private void setRowData() {
-
-	}
+    }
 
 }
-
