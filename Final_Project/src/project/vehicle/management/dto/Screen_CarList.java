@@ -2,6 +2,7 @@ package project.vehicle.management.dto;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -9,6 +10,10 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -17,8 +22,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
+import project.vehicle.management.dto.TestTable.MyModel;
 
 /**
  * 
@@ -42,16 +53,16 @@ public class Screen_CarList extends JFrame implements ActionListener {
 	JComboBox<String> fCombo5;
 	JComboBox<String> fCombo6;
 	Font font = new Font("Arial", Font.BOLD, 24);
-
+ 
 	// Font f = new Font(Font.PLAIN, 16);
 
 	Screen_CarList(String dealerName) {
-		createAddComponents();
+		createAddComponents(dealerName);
 		addListener();
 		makeVisible(dealerName);
 	}
 
-	private void createAddComponents() {
+	private void createAddComponents(String dealerName) {
 		add = new JButton("<html><font color='062F8E'>Add</font></html>");
 		delete = new JButton("<html><font color='062F8E'>Delete</font></html>");
 		modify = new JButton("<html><font color='062F8E'>Modify</font></html>");
@@ -67,9 +78,44 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		buttonPanel.add(add);
 		buttonPanel.add(delete);
 		buttonPanel.add(modify);
-		Table table = new Table();
-		// table.setOpaque(true);
-		tablePanel.add(table);
+	
+		CarFileManager cfm = new CarFileManager();
+    	ArrayList<Car> temp = new ArrayList<Car>();
+    	temp =cfm.readCars("/Users/khutaijashariff/Documents/workspace/16SpringProject/Final_Project/src/project/vehicle/data/"+dealerName);
+    	CarSearchManager csm = new CarSearchManager(temp);
+       
+       List<String> columns = Arrays.asList("ACTION", "VIN", "CONDITION", "YEAR", "MAKE", "MODEL", "TRIM", "TYPE","PRICE");
+       ArrayList<Car> data = csm.listCarsByDealer(dealerName);
+		
+	
+		 ArrayList<Object[]> data1 = new ArrayList<Object[]>(); 
+	        
+	        for(int i=0; i<data.size(); i++){
+	        	Object[] value = new Object[9];
+	        	value[0] = "";
+	        	value[1] = data.get(i).getVIN();;
+	        	value[2] = data.get(i).getCondition();
+	        	value[3] = data.get(i).getYear();
+	        	value[4] = data.get(i).getMake();
+	        	value[5] = data.get(i).getModel();
+	        	value[6] = data.get(i).getTrim();
+	        	value[7] = data.get(i).getType();
+	            value[8] = data.get(i).getPrice(); 
+	        	data1.add(value);
+	        }
+	        JTable table = new JTable(new MyModel(columns, data1));
+	        tablePanel.add(new JScrollPane(table));
+	      //  JScrollPane scrollPane = new JScrollPane(table);
+			//tablePanel.add(scrollPane);
+	        table.setAutoCreateRowSorter(true);
+			table.setPreferredScrollableViewportSize(new Dimension(1200, 900));
+			table.setShowGrid(true);
+			table.setGridColor(Color.lightGray);
+			TableColumn column = table.getColumnModel().getColumn(0);
+			column.setCellRenderer(new RadioButton());
+			
+		 table.setOpaque(true);
+	
 
 		fHeading = new JLabel(("<html><font color='062F8E'>Filter Cars</font></html>"));
 		filterPanel1.add(fHeading);
@@ -165,10 +211,10 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		gbc.gridx = 1;
 		gbc.gridy = 7;
 		filterPanel.add(fCombo6, gbc);
-		
+
 		filterPanel1.add(filter);
 		filterPanel1.add(reset);
-		
+
 		gbc.gridx = 1;
 		gbc.gridy = 8;
 		filterPanel.add(filterPanel1, gbc);
@@ -176,23 +222,19 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		this.getContentPane().add(filterPanel, BorderLayout.WEST);
 		this.getContentPane().add(tablePanel, BorderLayout.CENTER);
 		this.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
-		
-		//deleteDialog = new JDialog();
 
 	}
-	
 
 	private void makeVisible(String dealerName) {
-		
-		this.setTitle("Welcome " +dealerName);
-		//System.out.println(getDealer.getSelectedName());
+
+		this.setTitle("Welcome " + dealerName);
 		this.setSize(1500, 1500);
 		this.setVisible(true);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setDefaultLookAndFeelDecorated(true);
 		// this.setFonts();
-	
+
 	}
 
 	private void addListener() {
@@ -205,13 +247,16 @@ public class Screen_CarList extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent ae) {
 		if (ae.getSource() == delete) {
-			
+
 			JDialog.setDefaultLookAndFeelDecorated(true);
-			int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?", "Confirmation",JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE); 
-			if(confirm == 0){
+			int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?",
+					"Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+			if (confirm == 0) {
 				System.out.println("At least this works");
-			/*	CarDataManager cm = new CarDataManager();
-				cm.deleteCarByVIN(String VIN); */
+				/*
+				 * CarDataManager cm = new CarDataManager();
+				 * cm.deleteCarByVIN(String VIN);
+				 */
 			}
 		}
 		if (ae.getSource() == add) {
@@ -238,9 +283,8 @@ public class Screen_CarList extends JFrame implements ActionListener {
 
 	public static void main(String[] args) {
 
-		//Screen_CarList screen = new Screen_CarList();
+		// Screen_CarList screen = new Screen_CarList();
 
 	}
 
 }
-
