@@ -30,10 +30,10 @@ public class Screen_CarList extends JFrame implements ActionListener {
 	JButton filter;
 	JButton clear;
 
-	Screen_CarList() {
+	Screen_CarList(String dealerName) {
 		createAddComponents();
 		addListener();
-		makeVisible();
+		makeVisible(dealerName);
 	}
 
 	private void createAddComponents() {
@@ -126,8 +126,9 @@ public class Screen_CarList extends JFrame implements ActionListener {
 
 	}
 
-	private void makeVisible() {
-		this.setTitle("Welcome DealerName"); //screen #1 has function getSelectedName()
+	private void makeVisible(String dealerName) {
+		Screen_Main sm = new Screen_Main();
+		this.setTitle("Welcome "+dealerName); //screen #1 has function getSelectedName()
 		this.setSize(1500, 1500);
 		this.setVisible(true);
 		this.setResizable(false);
@@ -159,7 +160,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 
 	public static void main(String[] args) {
 
-		Screen_CarList screen = new Screen_CarList();
+//		Screen_CarList screen = new Screen_CarList();
 
 	}
 

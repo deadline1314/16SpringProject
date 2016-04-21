@@ -29,12 +29,6 @@ public class Screen_Main extends JFrame{
 	private JComboBox<String> dealerOptions;
 	private JButton manageInv;
 	
-	private String selectedName;
-
-	public String getSelectedName() {
-		return selectedName;
-	}
-	
 	public Screen_Main(){
 		setTitle("Inventory Mangement Expert");
 		createComponents();
@@ -126,10 +120,10 @@ public class Screen_Main extends JFrame{
 				
 				//get the selected dealerName
 				int i = dealerOptions.getSelectedIndex();
-				selectedName = dealerOptions.getItemAt(i);
+				String selectedName = dealerOptions.getItemAt(i);
 				
-				//open the Screen #2, exit Screen #1
-				new Screen_CarList();
+				//open the Screen #2, exit Screen #1, pass the value
+				new Screen_CarList(selectedName);
 			}
 		});
 		
