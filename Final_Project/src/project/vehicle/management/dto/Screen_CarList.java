@@ -127,7 +127,6 @@ public class Screen_CarList extends JFrame implements ActionListener {
 	}
 
 	private void makeVisible(String dealerName) {
-		Screen_Main sm = new Screen_Main();
 		this.setTitle("Welcome "+dealerName); //screen #1 has function getSelectedName()
 		this.setSize(1500, 1500);
 		this.setVisible(true);
