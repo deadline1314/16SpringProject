@@ -17,7 +17,8 @@ import java.util.List;
 public class DealerManager {
 	
 		// DealerManager -> listOfDealers
-	public List<String> getDealersName(File f) throws IOException {
+	public List<String> getDealersName(String file) throws IOException {
+		File f = new File(file);
 		BufferedReader br = null;
 		List<String> dealersNameList = new ArrayList<String>();
 		try {

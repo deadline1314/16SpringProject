@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+=======
+package project.vehicle.management.dto;
+/**
+ * 
+ * @author Dora
+ *
+ */
+>>>>>>> origin/master
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -10,6 +19,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+<<<<<<< HEAD
 
 public class Screen_AddRecord extends JFrame {
 	/**
@@ -108,6 +118,104 @@ public class Screen_AddRecord extends JFrame {
 		
 	}
 
+=======
+public class Screen_AddRecord extends JFrame{
+	
+	//CarFileManager -> readCars, writeCars
+private static final long serialVersionUID = 1L;
+    private JComboBox<String> conditionBox, yearBox;
+    private JTextField vinField, makeField, modelField, trimField, typeField, priceField;
+    private JButton add, cancel;
+    private JLabel dealerName, vin, condition, year, make, model, trim, type, price;
+    private Car car;
+    private String dealerNameStr;
+	
+    
+    public static void main(String args[]) {
+        new Screen_AddRecord();
+    }
+	
+	public Screen_AddRecord(){
+		setTitle("Add car");
+//		setLayout(g);
+		createComponents();
+		addComponent();
+		addListeners();
+		setFonts();
+		makeItVisible();
+		
+	}
+
+	private void setFonts() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void createComponents() {
+		
+		dealerName = new JLabel("Dealer Name: " +"");//can't change name;
+		vin =new JLabel("VIN:");
+		condition = new JLabel("Car Condition: ");
+		year = new JLabel("Year: ");
+		make = new JLabel("Make: ");
+		model = new JLabel("Model: ");
+		trim = new JLabel("Trim: ");
+		type = new JLabel("Body style: ");
+		price = new JLabel("Price: ");
+		
+		add = new JButton("Add");
+		cancel = new JButton("Cancel");
+		
+		vinField =new JTextField(20);
+		makeField = new JTextField(20);
+		modelField = new JTextField(20);
+		trimField = new JTextField(20);
+		typeField = new JTextField(20);
+		priceField = new JTextField(20);
+		
+		String[] yearList = new String[47];
+		for (int i = 1970, j = 0; i <= 2016; i++, j++) {
+			yearList[j] = i + "";
+		}
+		yearBox = new JComboBox<String>(yearList);
+		
+		String[] Conditions = { "NEW", "USED", "CERTIFIED" };
+		conditionBox = new JComboBox<String>(Conditions);
+
+		
+	}
+
+	private void addListeners() {
+	    AddListener a = new AddListener();
+		add.addActionListener(a);
+		
+
+		CancelListener c = new CancelListener();
+		cancel.addActionListener(c);
+		
+	}
+	
+	class AddListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
+	class CancelListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			dispose();
+			
+		}
+		
+	}
+
+>>>>>>> origin/master
 	private void addComponent() {
 		
 		setLayout(new GridBagLayout());
@@ -162,5 +270,9 @@ public class Screen_AddRecord extends JFrame {
 	public void windowClosing(final WindowEvent e) {
 		this.dispose();
 	}
+<<<<<<< HEAD
 	
 }
+=======
+}
+>>>>>>> origin/master
