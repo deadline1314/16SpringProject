@@ -1,3 +1,5 @@
+package project.vehicle.management.dto;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -6,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
-import java.util.concurrent.locks.Condition;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -27,9 +29,12 @@ public class Screen_AddRecord extends JFrame {
     private JButton add, cancel;
     private JLabel dealerName, vin, condition, year, make, model, trim, type, price;
     private Car car;
-    private String dealerNameStr;
+    //private String dealerNameStr;
     private CarDataManager dataManager;
-    private Car.Condition con;
+    private CarFileManager fileManage;
+    private ArrayList<Car> carList;
+    
+  
 	
     
     public static void main(String args[]) {
@@ -39,7 +44,6 @@ public class Screen_AddRecord extends JFrame {
 	public Screen_AddRecord(){
 		
 		setTitle("Add car");
-//		setLayout(g);
 		createComponents();
 		addComponent();
 		addListeners();
@@ -104,7 +108,7 @@ public class Screen_AddRecord extends JFrame {
 			
 			    String dn = car.getDealerName();
 				String v = vinField.getText();
-				Condition c = conditionBox.getSelectedItem().toString();
+				String c= conditionBox.getSelectedItem().toString();
 				String yString = yearBox.getSelectedItem().toString();
 				int y = Integer.parseInt(yString);
 				String mk = makeField.getText();
@@ -114,13 +118,21 @@ public class Screen_AddRecord extends JFrame {
 				String pString = priceField.getText();
 				double p = Double.parseDouble(pString);
 				
-				Car car = new Car(v, dn, y, mk, con, md, tm,
+				Car car = new Car(v, dn, c, y, mk, md, tm,
 			            tp, p);
+				
+					if(v == null || c == null || y == 0 || mk == null || md == null || tm == null || tp == null || p == 0){
+				
+					JOptionPane.showMessageDialog(new JLabel(), "You must fill all the information!");
+				}
+					else{
 						dataManager.addCar(car);
+						fileManage.writeCars(carList, "/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/"+dn);
+						
 						dispose();
-		};
-					
-		
+				};
+				
+		}
 	}
 	
 	class CancelListener implements ActionListener{

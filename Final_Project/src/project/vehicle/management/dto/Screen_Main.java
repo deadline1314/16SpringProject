@@ -32,7 +32,7 @@ public class Screen_Main extends JFrame{
 	public Screen_Main(){
 		setTitle("Inventory Mangement Expert");
 		createComponents();
-		addComponents();
+		addComponent
 		addListeners();
 		makeItVisible();
 

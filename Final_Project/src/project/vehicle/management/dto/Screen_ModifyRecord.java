@@ -1,3 +1,5 @@
+package project.vehicle.management.dto;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -86,7 +88,7 @@ public class Screen_ModifyRecord extends JFrame{
 		typeField.setText(car.getType());
 		
 		priceField = new JTextField(20);
-		priceField.setText(car.getPrice());
+		priceField.setText(String.valueOf(car.getPrice()));
 		
 		String[] yearList = new String[47];
 		for (int i = 1970, j = 0; i <= 2016; i++, j++) {
@@ -192,3 +194,4 @@ public class Screen_ModifyRecord extends JFrame{
 	}
 	
 }
+
