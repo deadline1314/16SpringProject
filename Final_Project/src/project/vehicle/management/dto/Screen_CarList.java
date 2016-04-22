@@ -29,7 +29,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import project.vehicle.management.dto.TestTable.MyModel;
+import project.vehicle.management.dto.Table.MyModel;
 
 /**
  * 
