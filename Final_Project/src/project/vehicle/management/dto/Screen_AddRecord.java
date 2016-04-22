@@ -7,7 +7,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -16,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import project.vehicle.management.dto.Table.MyModel;
 
 //import Car.Condition;
 
@@ -29,19 +30,21 @@ public class Screen_AddRecord extends JFrame {
     private JButton add, cancel;
     private JLabel dealerName, vin, condition, year, make, model, trim, type, price;
     private Car car;
-    //private String dealerNameStr;
+    private String dealerNameStr;
     private CarDataManager dataManager;
-    private CarFileManager fileManage;
+    private CarFileManager dName;
     private ArrayList<Car> carList;
+    private MyModel myTable;
+   
     
   
 	
     
     public static void main(String args[]) {
-        new Screen_AddRecord();
+        //new Screen_AddRecord();
     }
 	
-	public Screen_AddRecord(){
+	public Screen_AddRecord(CarFileManager dName, MyModel myTable){
 		
 		setTitle("Add car");
 		createComponents();
@@ -49,6 +52,9 @@ public class Screen_AddRecord extends JFrame {
 		addListeners();
 		setFonts();
 		makeItVisible();
+		this.dName =dName;
+		this.myTable = myTable;
+		//dealerNameStr = dName.getd
 		
 	}
 
@@ -59,7 +65,7 @@ public class Screen_AddRecord extends JFrame {
 
 	private void createComponents() {
 		
-		dealerName = new JLabel("Dealer Name: " +"");//can't change name;
+		dealerName = new JLabel("Dealer Name: " + dealerNameStr);//can't change name;
 		vin =new JLabel("VIN:");
 		condition = new JLabel("Car Condition: ");
 		year = new JLabel("Year: ");
@@ -120,17 +126,21 @@ public class Screen_AddRecord extends JFrame {
 				
 				Car car = new Car(v, dn, c, y, mk, md, tm,
 			            tp, p);
-				
+				try {
 					if(v == null || c == null || y == 0 || mk == null || md == null || tm == null || tp == null || p == 0){
 				
 					JOptionPane.showMessageDialog(new JLabel(), "You must fill all the information!");
 				}
 					else{
 						dataManager.addCar(car);
-						fileManage.writeCars(carList, "/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/"+dn);
+						myTable.addTable(car);
+						dName.writeCars(carList, "/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/"+dn);
 						
 						dispose();
 				};
+				}catch(Exception e1){
+					e1.printStackTrace();
+				}
 				
 		}
 	}

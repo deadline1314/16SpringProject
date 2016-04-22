@@ -8,11 +8,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import project.vehicle.management.dto.Table.MyModel;
 
 
 /**
@@ -31,15 +35,18 @@ public class Screen_ModifyRecord extends JFrame{
     private JButton modify, cancel;
     private JLabel dealerName, vin, condition, year, make, model, trim, type, price;
     private Car car;
-    
+    private MyModel myTable;
+    private CarDataManager dataManager;
+
 	
     
     public static void main(String args[]) {
         //new Screen_ModifyRecord();
     }
 	
-	public Screen_ModifyRecord(Car car){
+	public Screen_ModifyRecord(Car car, MyModel myTable){
 		this.car = car;
+		this.myTable =myTable;
 		
 		setTitle("Modify car");
 //		setLayout(g);
@@ -119,8 +126,37 @@ public class Screen_ModifyRecord extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			
+		
+			    String dn = car.getDealerName();
+				String v = vinField.getText();
+				String c= conditionBox.getSelectedItem().toString();
+				String yString = yearBox.getSelectedItem().toString();
+				int y = Integer.parseInt(yString);
+				String mk = makeField.getText();
+				String md = modelField.getText();
+				String tm = trimField.getText();
+				String tp = typeField.getText();
+				String pString = priceField.getText();
+				double p = Double.parseDouble(pString);
+				
+				Car car = new Car(v, dn, c, y, mk, md, tm,
+			            tp, p);
+		
+			try {
+			    if(v == null || c == null || y == 0 || mk == null || md == null || tm == null || tp == null || p == 0){
+			    
+				
+					JOptionPane.showMessageDialog(new JLabel(), "You must fill all the information!");
+			}
+			else{
+			  //dataManager.update(car);
+				myTable.updateTable(car);
+				dispose();
+			};
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		}
 		
 	}
