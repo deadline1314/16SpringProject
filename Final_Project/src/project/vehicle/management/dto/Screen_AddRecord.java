@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 
 import project.vehicle.management.dto.Table.MyModel;
 
-//import Car.Condition;
+
 
 public class Screen_AddRecord extends JFrame {
 	/**
@@ -28,11 +28,11 @@ public class Screen_AddRecord extends JFrame {
     private JComboBox<String> conditionBox, yearBox;
     private JTextField vinField, makeField, modelField, trimField, typeField, priceField;
     private JButton add, cancel;
-    private JLabel dealerName, vin, condition, year, make, model, trim, type, price;
+    private JLabel dName, vin, condition, year, make, model, trim, type, price;
     private Car car;
-    private String dealerNameStr;
+    private String dealerName;
     private CarDataManager dataManager;
-    private CarFileManager dName;
+    private CarFileManager fileManager;
     private ArrayList<Car> carList;
     private MyModel myTable;
    
@@ -44,7 +44,7 @@ public class Screen_AddRecord extends JFrame {
         //new Screen_AddRecord();
     }
 	
-	public Screen_AddRecord(CarFileManager dName, MyModel myTable){
+	public Screen_AddRecord(String dealerName, ArrayList<Car> data){
 		
 		setTitle("Add car");
 		createComponents();
@@ -52,8 +52,8 @@ public class Screen_AddRecord extends JFrame {
 		addListeners();
 		setFonts();
 		makeItVisible();
-		this.dName =dName;
-		this.myTable = myTable;
+		this.dealerName = dealerName;
+		//this.myTable = myTable;
 		//dealerNameStr = dName.getd
 		
 	}
@@ -65,7 +65,7 @@ public class Screen_AddRecord extends JFrame {
 
 	private void createComponents() {
 		
-		dealerName = new JLabel("Dealer Name: " + dealerNameStr);//can't change name;
+		dName = new JLabel("Dealer Name: " + dealerName);//can't change name;
 		vin =new JLabel("VIN:");
 		condition = new JLabel("Car Condition: ");
 		year = new JLabel("Year: ");
@@ -133,8 +133,8 @@ public class Screen_AddRecord extends JFrame {
 				}
 					else{
 						dataManager.addCar(car);
-						myTable.addTable(car);
-						dName.writeCars(carList, "/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/"+dn);
+						//myTable.addTable(car);
+						fileManager.writeCars(carList, "/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/"+dn);
 						
 						dispose();
 				};
@@ -161,7 +161,7 @@ public class Screen_AddRecord extends JFrame {
 		
 		//GridBagConstraints gbc = new GridBagConstraints();
 		
-		add(dealerName, new GridBagConstraints(0, 0, 4, 1, 1, 1, GridBagConstraints.CENTER,
+		add(dName, new GridBagConstraints(0, 0, 4, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.HORIZONTAL, new Insets(2, 2, 2, 2), 0, 0));
 		add(vin, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.HORIZONTAL, new Insets(2, 2, 2, 2), 0, 0));
