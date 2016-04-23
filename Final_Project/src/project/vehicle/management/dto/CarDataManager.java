@@ -49,4 +49,11 @@ public class CarDataManager
         return null;
     }
 
+    public void modifyCar(Car aCar)
+    {
+        int index = myCars.indexOf(getCarByVIN(aCar.getVIN()));
+        myCars.remove(index);
+        myCars.add(index, aCar);
+    }
+
 }
