@@ -30,11 +30,12 @@ public class Screen_AddRecord extends JFrame {
     private JButton add, cancel;
     private JLabel dName, vin, condition, year, make, model, trim, type, price;
     private Car car;
-    private String dealerName;
+    String dn;
     private CarDataManager dataManager;
     private CarFileManager fileManager;
     private ArrayList<Car> carList;
-    private MyModel myTable;
+    
+    
    
     
   
@@ -45,14 +46,15 @@ public class Screen_AddRecord extends JFrame {
     }
 	
 	public Screen_AddRecord(String dealerName, ArrayList<Car> data){
-		
+		this.dn = dealerName;
+		this.carList = data;
 		setTitle("Add car");
 		createComponents();
 		addComponent();
 		addListeners();
 		setFonts();
 		makeItVisible();
-		this.dealerName = dealerName;
+		
 		//this.myTable = myTable;
 		//dealerNameStr = dName.getd
 		
@@ -65,7 +67,7 @@ public class Screen_AddRecord extends JFrame {
 
 	private void createComponents() {
 		
-		dName = new JLabel("Dealer Name: " + dealerName);//can't change name;
+		dName = new JLabel("Dealer Name: " + dn);//can't change name;
 		vin =new JLabel("VIN:");
 		condition = new JLabel("Car Condition: ");
 		year = new JLabel("Year: ");
@@ -112,7 +114,7 @@ public class Screen_AddRecord extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			    String dn = car.getDealerName();
+
 				String v = vinField.getText();
 				String c= conditionBox.getSelectedItem().toString();
 				String yString = yearBox.getSelectedItem().toString();
@@ -132,10 +134,11 @@ public class Screen_AddRecord extends JFrame {
 					JOptionPane.showMessageDialog(new JLabel(), "You must fill all the information!");
 				}
 					else{
+						dataManager = new CarDataManager(carList);
 						dataManager.addCar(car);
 						//myTable.addTable(car);
-						fileManager.writeCars(carList, "/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/"+dn);
-						
+						fileManager.writeCars(carList, "/Users/khutaijashariff/Documents/workspace/16SpringProject/Final_Project/src/project/vehicle/data/"+dn);
+						new Screen_CarList(carList, dn);
 						dispose();
 				};
 				}catch(Exception e1){

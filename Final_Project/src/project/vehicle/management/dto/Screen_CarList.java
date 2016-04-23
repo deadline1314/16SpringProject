@@ -3,18 +3,18 @@ package project.vehicle.management.dto;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -24,9 +24,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import project.vehicle.management.dto.Table.MyModel;
@@ -42,8 +39,8 @@ import project.vehicle.management.dto.Table.MyModel;
 public class Screen_CarList extends JFrame implements ActionListener {
 
 	JButton add, delete, modify, filter, reset;
-	JPanel filterPanel, tablePanel, buttonPanel, filterPanel1, filterPanel2;
-	JLabel fHeading, fLabel1, fLabel2, fLabel3, fLabel4, fLabel5, fLabel6;
+	JPanel filterPanel, tablePanel, buttonPanel, filterPanel1, imagePanel;
+	JLabel fHeading, fLabel1, fLabel2, fLabel3, fLabel4, fLabel5, fLabel6, imageLabel;
 	Screen_Main getDealer = new Screen_Main();
 
 	JComboBox<String> fCombo1;
@@ -52,11 +49,22 @@ public class Screen_CarList extends JFrame implements ActionListener {
 	JComboBox<String> fCombo4;
 	JComboBox<String> fCombo5;
 	JComboBox<String> fCombo6;
+	ArrayList<Car> data;
+	String dealerName;
 	Font font = new Font("Arial", Font.BOLD, 24);
  
 	// Font f = new Font(Font.PLAIN, 16);
 
 	Screen_CarList(String dealerName) {
+		this.dealerName = dealerName;
+		createAddComponents(dealerName);
+		addListener();
+		makeVisible(dealerName);
+	}
+	
+	Screen_CarList(ArrayList<Car> data, String dealerName) {
+		this.dealerName = dealerName;
+		this.data = data;
 		createAddComponents(dealerName);
 		addListener();
 		makeVisible(dealerName);
@@ -71,7 +79,6 @@ public class Screen_CarList extends JFrame implements ActionListener {
 
 		filterPanel = new JPanel();
 		filterPanel1 = new JPanel();
-		filterPanel2 = new JPanel();
 		tablePanel = new JPanel();
 		buttonPanel = new JPanel();
 
@@ -85,7 +92,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
     	CarSearchManager csm = new CarSearchManager(temp);
        
        List<String> columns = Arrays.asList("ACTION", "VIN", "CONDITION", "YEAR", "MAKE", "MODEL", "TRIM", "TYPE","PRICE");
-       ArrayList<Car> data = csm.listCarsByDealer(dealerName);
+       data = csm.listCarsByDealer(dealerName);
 		
 	
 		 ArrayList<Object[]> data1 = new ArrayList<Object[]>(); 
@@ -218,9 +225,14 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		gbc.gridx = 1;
 		gbc.gridy = 8;
 		filterPanel.add(filterPanel1, gbc);
-
+		
+		//imageLabel = new JLabel("");
+		//imageLabel.setIcon(new ImageIcon("/Users/khutaijashariff/Documents/workspace/16SpringProject/Final_Project/src/project/vehicle/pic/car1.jpg"));
+		//imagePanel.add(imageLabel);
+		
 		this.getContentPane().add(filterPanel, BorderLayout.WEST);
 		this.getContentPane().add(tablePanel, BorderLayout.CENTER);
+		//this.getContentPane().add(imageLabel, BorderLayout.NORTH);
 		this.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
 	}
@@ -233,6 +245,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setDefaultLookAndFeelDecorated(true);
+		//this.pack();
 		// this.setFonts();
 
 	}
@@ -260,7 +273,8 @@ public class Screen_CarList extends JFrame implements ActionListener {
 			}
 		}
 		if (ae.getSource() == add) {
-			Screen_AddRecord addScreen = new Screen_AddRecord();
+			
+			Screen_AddRecord addScreen = new Screen_AddRecord(dealerName, data);
 		}
 		if (ae.getSource() == reset) {
 
