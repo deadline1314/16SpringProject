@@ -227,7 +227,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		filterPanel.add(filterPanel1, gbc);
 		
 		imageLabel1 = new JLabel("");
-		imageLabel1.setIcon(new ImageIcon("/Users/khutaijashariff/Documents/workspace/16SpringProject/Final_Project/src/project/vehicle/pic/hope.jpg"));
+		imageLabel1.setIcon(new ImageIcon("/Users/khutaijashariff/Documents/workspace/16SpringProject/Final_Project/src/project/vehicle/pic/Screen2_header.jpg"));
 	//	imageLabel2 = new JLabel("");
 	//	imageLabel2.setIcon(new ImageIcon("/Users/khutaijashariff/Documents/workspace/16SpringProject/Final_Project/src/project/vehicle/pic/hope.jpg"));
 	//	FlowLayout flowLayout = new FlowLayout();
