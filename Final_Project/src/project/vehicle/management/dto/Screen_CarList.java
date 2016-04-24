@@ -3,7 +3,7 @@ package project.vehicle.management.dto;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -40,7 +40,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 
 	JButton add, delete, modify, filter, reset;
 	JPanel filterPanel, tablePanel, buttonPanel, filterPanel1, imagePanel;
-	JLabel fHeading, fLabel1, fLabel2, fLabel3, fLabel4, fLabel5, fLabel6, imageLabel;
+	JLabel fHeading, fLabel1, fLabel2, fLabel3, fLabel4, fLabel5, fLabel6, imageLabel1, imageLabel2;
 	Screen_Main getDealer = new Screen_Main();
 
 	JComboBox<String> fCombo1;
@@ -52,6 +52,8 @@ public class Screen_CarList extends JFrame implements ActionListener {
 	ArrayList<Car> data;
 	String dealerName;
 	Font font = new Font("Arial", Font.BOLD, 24);
+	CarFileManager cfm = new CarFileManager();
+  
  
 	// Font f = new Font(Font.PLAIN, 16);
 
@@ -86,7 +88,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		buttonPanel.add(delete);
 		buttonPanel.add(modify);
 	
-		CarFileManager cfm = new CarFileManager();
+		
     	ArrayList<Car> temp = new ArrayList<Car>();
     	temp =cfm.readCars("/Users/khutaijashariff/Documents/workspace/16SpringProject/Final_Project/src/project/vehicle/data/"+dealerName);
     	CarSearchManager csm = new CarSearchManager(temp);
@@ -112,10 +114,8 @@ public class Screen_CarList extends JFrame implements ActionListener {
 	        }
 	        JTable table = new JTable(new MyModel(columns, data1));
 	        tablePanel.add(new JScrollPane(table));
-	      //  JScrollPane scrollPane = new JScrollPane(table);
-			//tablePanel.add(scrollPane);
 	        table.setAutoCreateRowSorter(true);
-			table.setPreferredScrollableViewportSize(new Dimension(1200, 900));
+			table.setPreferredScrollableViewportSize(new Dimension(1150, 490));
 			table.setShowGrid(true);
 			table.setGridColor(Color.lightGray);
 			TableColumn column = table.getColumnModel().getColumn(0);
@@ -158,13 +158,13 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		GridBagConstraints gbc = new GridBagConstraints();
 
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.ipady = 60;
+		gbc.ipady = 50;
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		filterPanel.add(fHeading, gbc);
 
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.ipady = 60;
+		gbc.ipady = 50;
 		gbc.gridx = 0;
 		gbc.gridy = 2;
 		filterPanel.add(fLabel1, gbc);
@@ -173,7 +173,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		filterPanel.add(fCombo1, gbc);
 
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.ipady = 60;
+		gbc.ipady = 50;
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		filterPanel.add(fLabel2, gbc);
@@ -183,7 +183,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		filterPanel.add(fCombo2, gbc);
 
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.ipady = 60;
+		gbc.ipady = 50;
 		gbc.gridx = 0;
 		gbc.gridy = 4;
 		filterPanel.add(fLabel3, gbc);
@@ -192,7 +192,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		gbc.gridy = 4;
 		filterPanel.add(fCombo3, gbc);
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.ipady = 60;
+		gbc.ipady = 50;
 		gbc.gridx = 0;
 		gbc.gridy = 5;
 		filterPanel.add(fLabel4, gbc);
@@ -201,7 +201,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		gbc.gridy = 5;
 		filterPanel.add(fCombo4, gbc);
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.ipady = 60;
+		gbc.ipady = 50;
 		gbc.gridx = 0;
 		gbc.gridy = 6;
 		filterPanel.add(fLabel5, gbc);
@@ -210,7 +210,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		gbc.gridy = 6;
 		filterPanel.add(fCombo5, gbc);
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.ipady = 60;
+		gbc.ipady = 50;
 		gbc.gridx = 0;
 		gbc.gridy = 7;
 		filterPanel.add(fLabel6, gbc);
@@ -226,13 +226,24 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		gbc.gridy = 8;
 		filterPanel.add(filterPanel1, gbc);
 		
-		//imageLabel = new JLabel("");
-		//imageLabel.setIcon(new ImageIcon("/Users/khutaijashariff/Documents/workspace/16SpringProject/Final_Project/src/project/vehicle/pic/car1.jpg"));
-		//imagePanel.add(imageLabel);
+		imageLabel1 = new JLabel("");
+		imageLabel1.setIcon(new ImageIcon("/Users/khutaijashariff/Documents/workspace/16SpringProject/Final_Project/src/project/vehicle/pic/hope.jpg"));
+	//	imageLabel2 = new JLabel("");
+	//	imageLabel2.setIcon(new ImageIcon("/Users/khutaijashariff/Documents/workspace/16SpringProject/Final_Project/src/project/vehicle/pic/hope.jpg"));
+	//	FlowLayout flowLayout = new FlowLayout();
+		//flowLayout.setAlignment(FlowLayout.LEFT);
+		//imagePanel.setLayout(flowLayout);
 		
+		
+	//	imagePanel.add(imageLabel1);
+	//	imagePanel.add(imageLabel2);
+	
+		//imagePanel.setBounds(5, 5, 200, 300);
+		
+	
 		this.getContentPane().add(filterPanel, BorderLayout.WEST);
 		this.getContentPane().add(tablePanel, BorderLayout.CENTER);
-		//this.getContentPane().add(imageLabel, BorderLayout.NORTH);
+		this.getContentPane().add(imageLabel1, BorderLayout.NORTH);	
 		this.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
 	}
@@ -265,11 +276,14 @@ public class Screen_CarList extends JFrame implements ActionListener {
 			int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?",
 					"Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 			if (confirm == 0) {
-				System.out.println("At least this works");
-				/*
-				 * CarDataManager cm = new CarDataManager();
-				 * cm.deleteCarByVIN(String VIN);
-				 */
+
+		    	ArrayList<Car> tempDelete = new ArrayList<Car>();
+		    	tempDelete =cfm.readCars("/Users/khutaijashariff/Documents/workspace/16SpringProject/Final_Project/src/project/vehicle/data/"+dealerName);
+		    	CarDataManager cdm = new CarDataManager(tempDelete);
+			    cdm.deleteCarByVIN("2655761333");
+			   cfm.writeCars(tempDelete, "/Users/khutaijashariff/Documents/workspace/16SpringProject/Final_Project/src/project/vehicle/data/"+dealerName);
+			   new Screen_CarList(tempDelete, dealerName);
+				
 			}
 		}
 		if (ae.getSource() == add) {
