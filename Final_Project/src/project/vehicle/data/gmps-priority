@@ -1141,11 +1141,4 @@ id~webId~category~year~make~model~trim~type~price
 2650657963~gmps-priority~used~1998~Mercury~Villager~Nautica~VAN~3000.0
 2661870623~gmps-priority~used~1997~Dodge~Neon~Highline~CAR~4998.0
 2638346833~gmps-priority~used~1996~Ford~Crown Victoria~Base~CAR~3999.0
-12~gmps-priority~NEW~1970~12121~12112~12~1212~21.0
-121~gmps-priority~NEW~1970~2121~212~122~1221~121.0
-213~gmps-priority~NEW~1970~1~21~1~1~1.0
-22~gmps-priority~NEW~1970~2~22~2~2~2.0
-4~gmps-priority~NEW~1970~4~4~4~4~4.0
-1~gmps-priority~NEW~1970~1~1~1~1~1.0
-~gmps-priority~NEW~1970~~~~~1.0
-1~gmps-priority~NEW~1970~1~1~1~1~1.0
+
