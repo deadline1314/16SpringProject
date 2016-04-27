@@ -121,7 +121,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		 * read dealerName from Screen #1 and form the carList
 		 */
 		ArrayList<Car> temp = new ArrayList<Car>();
-		temp = cfm.readCars("/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/" + dealerName);
+		temp = cfm.readCars("/Users/workspace/Final_Project/src/project/vehicle/data/" + dealerName);
 		CarSearchManager csm = new CarSearchManager(temp);
 		data = csm.listCarsByDealer(dealerName);
 
@@ -252,6 +252,8 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		// ----------Changes made by Jia(Section 2/4) End----------
 		// --------------------------------------------------------
 
+		
+		
 		/*
 		 * set gridbagLayout
 		 */
@@ -330,7 +332,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 
 		// next 7 lines include changes made for heading/picture
 		imageLabel1 = new JLabel("");
-		imageLabel1.setIcon(new ImageIcon("/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/pic/Screen2_header.jpg"));
+		imageLabel1.setIcon(new ImageIcon("/Users/workspace/Final_Project/src/project/vehicle/pic/Screen2_header.jpg"));
 		imagePanel = new JPanel();
 		imagePanel.add(imageLabel1);
 		this.getContentPane().add(filterPanel, BorderLayout.WEST);
@@ -387,7 +389,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 	private void resetData() {
 
 		ArrayList<Car> temp = new ArrayList<Car>();
-		temp = cfm.readCars("/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/" + dealerName);
+		temp = cfm.readCars("/Users/workspace/Final_Project/src/project/vehicle/data/" + dealerName);
 		CarSearchManager csm = new CarSearchManager(temp);
 		data = csm.listCarsByDealer(dealerName);
 		refreshData();
@@ -451,12 +453,12 @@ public class Screen_CarList extends JFrame implements ActionListener {
                       System.out.println(vin);
                       ArrayList<Car> tempDelete = new ArrayList<Car>();
                       tempDelete = cfm.readCars(
-                                      "/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/"
+                                      "/Users/workspace/Final_Project/src/project/vehicle/data/"
                                                       + dealerName);
                       CarDataManager cdm = new CarDataManager(tempDelete);
 
                       cdm.deleteCarByVIN(vin);
-                      cfm.writeCars(tempDelete,"/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/"+ dealerName);
+                      cfm.writeCars(tempDelete,"/Users/workspace/Final_Project/src/project/vehicle/data/"+ dealerName);
                       new Screen_CarList(tempDelete, dealerName);
 
               }
@@ -474,7 +476,6 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		if (ae.getSource() == modify) {
 
 			int test = table.getSelectedRow();
-			System.out.println(test);
 			Car c = new Car((String) dataFinal[test][1], dealerName, (String) dataFinal[test][2],
 					(Integer) dataFinal[test][3], (String) dataFinal[test][4], (String) dataFinal[test][5],
 					(String) dataFinal[test][6], (String) dataFinal[test][7], (Double) dataFinal[test][8]);
