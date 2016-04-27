@@ -39,7 +39,6 @@ public class RadioButtonEditor extends DefaultCellEditor implements ItemListener
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		jb = (JRadioButton)this.getCellEditorValue();
-		System.out.println(jb);
 	}
 
 	public JRadioButton getRB(JRadioButton jb){
