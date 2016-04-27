@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 /**
  * 
- * @author Lei Zhou
+ * 
  *
  */
 
@@ -21,6 +21,7 @@ public class CarDataManager
     public void addCar(Car newCar)
     {
         myCars.add(newCar);
+        //return myCars;  
     }
 
     public void deleteCarByVIN(String VIN)
@@ -35,6 +36,7 @@ public class CarDataManager
                 i.remove();
             }
         }
+       // return myCars;
     }
 
     public Car getCarByVIN(String VIN)
@@ -54,6 +56,7 @@ public class CarDataManager
         int index = myCars.indexOf(getCarByVIN(aCar.getVIN()));
         myCars.remove(index);
         myCars.add(index, aCar);
+        //return myCars;
     }
 
 }

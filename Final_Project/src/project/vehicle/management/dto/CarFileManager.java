@@ -20,8 +20,11 @@ public class CarFileManager {
 	// CarFileManager -> readCars, writeCars
 
 	//read data from file and change it into Car type
+	
+	
 	private ArrayList<Car> carList;
 	public ArrayList<Car> readCars(String file) {
+	
 		boolean isFirstLine = true;
 		carList = new ArrayList<Car>();
 		try {
@@ -64,6 +67,7 @@ public class CarFileManager {
 			String line = car.getVIN() + "~" + car.getDealerName() + "~"+ car.getCondition() + "~" + 
 					String.valueOf(car.getYear()) + "~"+ car.getMake() + "~"  + car.getModel() + "~"
 					+ car.getTrim() + "~" + car.getType() + "~" + String.valueOf(car.getPrice());
+			System.out.println(line);
 			temp.add(line);
 		}
 		try {
@@ -75,6 +79,7 @@ public class CarFileManager {
 				String strln = str+"\n";
 				fos.write(strln.getBytes());
 			}
+			fos.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -85,9 +90,9 @@ public class CarFileManager {
 	public static void main(String[] args) {
 		CarFileManager cfm = new CarFileManager();
 		ArrayList<Car> car;
-		car = cfm.readCars("/Users/workspace/Final_Project/src/project/vehicle/data/gmps-aj-dohmann");
+		car = cfm.readCars("/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/gmps-aj-dohmann");
 		for(Car c : car){
-			System.out.println(c);
+			System.out.println(c.getDealerName());
 		}
 
 	}

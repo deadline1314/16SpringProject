@@ -32,7 +32,7 @@ public class Screen_Main extends JFrame{
 	public Screen_Main(){
 		setTitle("Inventory Mangement Expert");
 		createComponents();
-		addComponent
+		addComponents();
 		addListeners();
 		makeItVisible();
 
@@ -45,7 +45,7 @@ public class Screen_Main extends JFrame{
 		setContentPane(contentPane);
 		
 		label1 = new JLabel("");
-		label1.setIcon(new ImageIcon("/Users/workspace/Final_Project/src/project/vehicle/pic/Screen1_Title.jpg"));
+		label1.setIcon(new ImageIcon("/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/pic/Screen1_Title.jpg"));
 		
 		table = new JTable();
 		
@@ -57,7 +57,7 @@ public class Screen_Main extends JFrame{
 					dealerOptions = new JComboBox<String>();
 					DealerManager dm = new DealerManager();
 					List<String> contents = new ArrayList<String>();
-					contents = dm.getDealersName("/Users/workspace/Final_Project/src/project/vehicle/data/dealers");
+					contents = dm.getDealersName("/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/dealers");
 					for(String str : contents){
 						dealerOptions.addItem(str);
 					}
@@ -67,7 +67,7 @@ public class Screen_Main extends JFrame{
 				
 				manageInv = new JButton("");
 				manageInv.setBackground(UIManager.getColor("Button.highlight"));
-				manageInv.setIcon(new ImageIcon("/Users/workspace/Final_Project/src/project/vehicle/pic/Screen1_Button.jpg"));
+				manageInv.setIcon(new ImageIcon("/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/pic/Screen1_Button.jpg"));
 				
 				
 	}

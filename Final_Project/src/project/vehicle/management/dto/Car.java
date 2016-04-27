@@ -2,7 +2,7 @@ package project.vehicle.management.dto;
 
 /**
  * 
- * @author Lei Zhou
+ * 
  *
  */
 
