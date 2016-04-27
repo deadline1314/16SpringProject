@@ -177,7 +177,6 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		table.setShowGrid(true);
 		table.setGridColor(Color.lightGray);
 		table.setEditingColumn(0);
-		table.getSelectedRow();
 
 		/*
 		 * fill the first column with radioButton
@@ -351,8 +350,6 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setDefaultLookAndFeelDecorated(true);
-		// this.pack();
-		// this.setFonts();
 
 	}
 
