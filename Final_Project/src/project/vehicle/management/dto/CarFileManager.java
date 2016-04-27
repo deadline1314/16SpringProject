@@ -67,7 +67,6 @@ public class CarFileManager {
 			String line = car.getVIN() + "~" + car.getDealerName() + "~"+ car.getCondition() + "~" + 
 					String.valueOf(car.getYear()) + "~"+ car.getMake() + "~"  + car.getModel() + "~"
 					+ car.getTrim() + "~" + car.getType() + "~" + String.valueOf(car.getPrice());
-			System.out.println(line);
 			temp.add(line);
 		}
 		try {
@@ -88,13 +87,6 @@ public class CarFileManager {
 	}
 
 	public static void main(String[] args) {
-		CarFileManager cfm = new CarFileManager();
-		ArrayList<Car> car;
-		car = cfm.readCars("/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/gmps-aj-dohmann");
-		for(Car c : car){
-			System.out.println(c.getDealerName());
-		}
-
 	}
 
 }
