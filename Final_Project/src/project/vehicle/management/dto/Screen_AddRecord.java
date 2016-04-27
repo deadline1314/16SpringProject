@@ -77,12 +77,12 @@ public class Screen_AddRecord extends JFrame {
 		add = new JButton("Add");
 		cancel = new JButton("Cancel");
 
-		vinField = new JTextField(20);
-		makeField = new JTextField(20);
-		modelField = new JTextField(20);
-		trimField = new JTextField(20);
-		typeField = new JTextField(20);
-		priceField = new JTextField(20);
+		vinField = new JTextField(25);
+		makeField = new JTextField(25);
+		modelField = new JTextField(25);
+		trimField = new JTextField(25);
+		typeField = new JTextField(25);
+		priceField = new JTextField(25);
 
 		String[] yearList = new String[47];
 		for (int i = 1970, j = 0; i <= 2016; i++, j++) {
@@ -196,7 +196,7 @@ public class Screen_AddRecord extends JFrame {
 
 	private void makeItVisible() {
 
-		this.setSize(500, 400);
+		this.setSize(600, 500);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null); // show in the center
 		this.setResizable(false);

@@ -78,23 +78,23 @@ public class Screen_ModifyRecord extends JFrame {
 		modify = new JButton("Modify");
 		cancel = new JButton("Cancel");
 
-		vinField = new JTextField(20);
+		vinField = new JTextField(30);
 		vinField.setText(car.getVIN());
 		vinField.setEditable(false);
 
-		makeField = new JTextField(20);
+		makeField = new JTextField(25);
 		makeField.setText(car.getMake());
 
-		modelField = new JTextField(20);
+		modelField = new JTextField(25);
 		modelField.setText(car.getModel());
 
-		trimField = new JTextField(20);
+		trimField = new JTextField(25);
 		trimField.setText(car.getModel());
 
-		typeField = new JTextField(20);
+		typeField = new JTextField(25);
 		typeField.setText(car.getType());
 
-		priceField = new JTextField(20);
+		priceField = new JTextField(25);
 		priceField.setText(String.valueOf(car.getPrice()));
 
 		String[] yearList = new String[47];
@@ -208,7 +208,7 @@ public class Screen_ModifyRecord extends JFrame {
 	}
 
 	private void makeItVisible() {
-		this.setSize(500, 400);
+		this.setSize(600, 500);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null); // show in the center
 		this.setResizable(false);
