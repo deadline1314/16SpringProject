@@ -27,7 +27,6 @@ public class Table {
 		@Override
 		public int getColumnCount() {
 			return columnNames.size();
-			// return columnNames.length();
 		}
 
 		@Override
@@ -53,7 +52,6 @@ public class Table {
 		// try
 		@Override
 		public void setValueAt(Object value, int row, int col) {
-//			super.setValueAt(value, row, col);
 			if ((value != null) && (value.getClass() == JRadioButton.class)) {
 				data[row][col] = value;
 				fireTableCellUpdated(row, col);
