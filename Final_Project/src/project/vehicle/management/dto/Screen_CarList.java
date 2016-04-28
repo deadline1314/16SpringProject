@@ -173,7 +173,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		table = new JTable(new MyModel(columns, dataFinal));
 		tablePanel.add(new JScrollPane(table));
 		table.setAutoCreateRowSorter(true);
-		table.setPreferredScrollableViewportSize(new Dimension(1150, 490));
+		table.setPreferredScrollableViewportSize(new Dimension(1000, 490));
 		table.setShowGrid(true);
 		table.setGridColor(Color.lightGray);
 		table.setEditingColumn(0);
