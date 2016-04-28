@@ -357,7 +357,7 @@ public class CarFilterManager {
 				e = true;
 
 			f = (originalCar.getPrice() >= minPrice) && (originalCar.getPrice() < maxPrice);
-			if (priceSelected.equals("Selected"))
+			if (priceSelected.equals("Select"))
 				f = true;
 
 			g = !tempCarList.contains(originalCar);
@@ -378,8 +378,11 @@ public class CarFilterManager {
 
 	public void priceFilter(String n) {
 		priceSelected = n;
-		if (n.equals("Select")) {
-			return;
+		if (!n.equals("Select")) 
+		{
+		String[] priceRange = priceSelected.split("~");
+                minPrice = Double.valueOf(priceRange[0]);
+                maxPrice = Double.valueOf(priceRange[1]);
 		}
 		String[] priceRange = priceSelected.split("~");
 		minPrice = Double.valueOf(priceRange[0]);
