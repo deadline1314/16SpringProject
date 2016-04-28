@@ -132,7 +132,7 @@ public class Screen_Main extends JFrame{
 	private void makeItVisible(){
 		this.setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 500);
+		setBounds(350, 100, 700, 500);
 		
 	}
 	
