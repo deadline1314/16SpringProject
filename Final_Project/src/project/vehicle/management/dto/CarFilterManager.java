@@ -41,8 +41,7 @@ public class CarFilterManager {
 
 	public CarFilterManager(String dealerName) {
 		CarFileManager cfm = new CarFileManager();
-		this.originalCarList = cfm.readCars(
-				"/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/" + dealerName);
+		this.originalCarList = cfm.readCars("src/project/vehicle/data/" + dealerName);
 		this.tempCarList = new ArrayList<Car>(originalCarList);
 	}
 
