@@ -463,14 +463,13 @@ public class Screen_CarList extends JFrame implements ActionListener
         {
 
             int deleteIndex = table.getSelectedRow();
-            System.out.println(deleteIndex);
             JDialog.setDefaultLookAndFeelDecorated(true);
             int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?",
                     "Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             if (confirm == 0)
             {
                 String vin = (String) table.getValueAt(deleteIndex, 1);
-                System.out.println(vin);
+              
                 ArrayList<Car> tempDelete = new ArrayList<Car>();
                 tempDelete = cfm.readCars("src/project/vehicle/data/" + dealerName);
                 CarDataManager cdm = new CarDataManager(tempDelete);
@@ -496,6 +495,11 @@ public class Screen_CarList extends JFrame implements ActionListener
         {
 
             int test = table.getSelectedRow();
+            if(test == -1){
+				JOptionPane.showMessageDialog(new JLabel(), "You must chose a car!", "Error",
+						JOptionPane.ERROR_MESSAGE);
+				
+			}
             Car c = new Car((String) dataFinal[test][1], dealerName, (String) dataFinal[test][2],
                     (Integer) dataFinal[test][3], (String) dataFinal[test][4], (String) dataFinal[test][5],
                     (String) dataFinal[test][6], (String) dataFinal[test][7], (Double) dataFinal[test][8]);
