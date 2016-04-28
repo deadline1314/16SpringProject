@@ -27,6 +27,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
+import javax.swing.ListSelectionModel;
 
 import project.vehicle.management.dto.Table.MyModel;
 
@@ -177,6 +178,8 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		table.setShowGrid(true);
 		table.setGridColor(Color.lightGray);
 		table.setEditingColumn(0);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
 
 		/*
 		 * fill the first column with radioButton
