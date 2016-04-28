@@ -38,9 +38,9 @@ public class Screen_ModifyRecord extends JFrame {
 	public CarFileManager fileManager;
 	private String dn;
 
-	public static void main(String args[]) {
-		// new Screen_ModifyRecord();
-	}
+//	public static void main(String args[]) {
+//		 new Screen_ModifyRecord();
+//	}
 
 	public Screen_ModifyRecord(Car car, String dealerName, ArrayList<Car> data) {
 		this.car = car;
@@ -53,15 +53,10 @@ public class Screen_ModifyRecord extends JFrame {
 		createComponents();
 		addComponent();
 		addListeners();
-		setFonts();
 		makeItVisible();
 
 	}
 
-	private void setFonts() {
-		// TODO Auto-generated method stub
-
-	}
 
 	private void createComponents() {
 
@@ -78,7 +73,7 @@ public class Screen_ModifyRecord extends JFrame {
 		modify = new JButton("Modify");
 		cancel = new JButton("Cancel");
 
-		vinField = new JTextField(30);
+		vinField = new JTextField(25);
 		vinField.setText(car.getVIN());
 		vinField.setEditable(false);
 
@@ -127,7 +122,6 @@ public class Screen_ModifyRecord extends JFrame {
 			String v = vinField.getText();
 			String c = conditionBox.getSelectedItem().toString();
 			String yString = yearBox.getSelectedItem().toString();
-			int y = Integer.parseInt(yString);
 			String mk = makeField.getText();
 			String md = modelField.getText();
 			String tm = trimField.getText();
@@ -140,6 +134,7 @@ public class Screen_ModifyRecord extends JFrame {
 						JOptionPane.ERROR_MESSAGE);
 
 			} else {
+				int y = Integer.parseInt(yString);
 				double p = Double.parseDouble(pString);
 				Car car = new Car(v, dn, c, y, mk, md, tm, tp, p);
 				dataManager.modifyCar(car);

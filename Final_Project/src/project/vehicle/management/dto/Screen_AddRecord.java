@@ -39,9 +39,9 @@ public class Screen_AddRecord extends JFrame {
 	private CarFileManager fileManager;
 	private ArrayList<Car> carList;
 
-	public static void main(String args[]) {
-		// new Screen_AddRecord();
-	}
+//	public static void main(String args[]) {
+//		 new Screen_AddRecord();
+//	}
 
 	public Screen_AddRecord(String dealerName, ArrayList<Car> data) {
 		this.dn = dealerName;
@@ -52,15 +52,11 @@ public class Screen_AddRecord extends JFrame {
 		createComponents();
 		addComponent();
 		addListeners();
-		setFonts();
 		makeItVisible();
 
 	}
 
-	private void setFonts() {
-		// TODO Auto-generated method stub
 
-	}
 
 	private void createComponents() {
 
@@ -112,7 +108,6 @@ public class Screen_AddRecord extends JFrame {
 			String v = vinField.getText();
 			String c = conditionBox.getSelectedItem().toString();
 			String yString = yearBox.getSelectedItem().toString();
-			int y = Integer.parseInt(yString);
 			String mk = makeField.getText();
 			String md = modelField.getText();
 			String tm = trimField.getText();
@@ -125,6 +120,7 @@ public class Screen_AddRecord extends JFrame {
 						JOptionPane.ERROR_MESSAGE);
 
 			} else {
+				int y = Integer.parseInt(yString);
 				double p = Double.parseDouble(pString);
 				Car car = new Car(v, dn, c, y, mk, md, tm, tp, p);
 				dataManager.addCar(car);
