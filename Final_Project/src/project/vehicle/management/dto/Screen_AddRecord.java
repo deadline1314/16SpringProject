@@ -128,7 +128,7 @@ public class Screen_AddRecord extends JFrame {
 				double p = Double.parseDouble(pString);
 				Car car = new Car(v, dn, c, y, mk, md, tm, tp, p);
 				dataManager.addCar(car);
-				String des = "/Users/fandonghan/desktop/16SpringProject/Final_Project/src/project/vehicle/data/" + dn;
+				String des = "src/project/vehicle/data/" + dn;
 				System.out.println("wrting to file: " + des);
 				fileManager.writeCars(carList, des);
 				new Screen_CarList(carList, dn);
