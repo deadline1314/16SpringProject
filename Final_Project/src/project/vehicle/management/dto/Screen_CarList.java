@@ -715,6 +715,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 			currCombos[2] = (String) fCombo3.getSelectedItem();
 			currCombos[3] = (String) fCombo4.getSelectedItem();
 			currCombos[4] = (String) fCombo5.getSelectedItem();
+			currCombos[5] = (String) fCombo6.getSelectedItem();
 		}
 
 		private void recoverCurrent(int indexCombo) {
@@ -733,6 +734,10 @@ public class Screen_CarList extends JFrame implements ActionListener {
 			if (indexCombo != 5) {
 				fCombo5.setSelectedItem(currCombos[4]);
 			}
+			if (indexCombo != 6)
+            		{
+                		fCombo6.setSelectedItem(currCombos[5]);
+            		}
 		}
 
 	}
