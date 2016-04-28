@@ -121,7 +121,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 		 * read dealerName from Screen #1 and form the carList
 		 */
 		ArrayList<Car> temp = new ArrayList<Car>();
-		temp = cfm.readCars("/Users/workspace/Final_Project/src/project/vehicle/data/" + dealerName);
+		temp = cfm.readCars("src/project/vehicle/data/" + dealerName);
 		CarSearchManager csm = new CarSearchManager(temp);
 		data = csm.listCarsByDealer(dealerName);
 
@@ -331,7 +331,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 
 		// next 7 lines include changes made for heading/picture
 		imageLabel1 = new JLabel("");
-		imageLabel1.setIcon(new ImageIcon("/Users/workspace/Final_Project/src/project/vehicle/pic/Screen2_header.jpg"));
+		imageLabel1.setIcon(new ImageIcon("src/project/vehicle/pic/Screen2_header.jpg"));
 		imagePanel = new JPanel();
 		imagePanel.add(imageLabel1);
 		this.getContentPane().add(filterPanel, BorderLayout.WEST);
@@ -386,7 +386,7 @@ public class Screen_CarList extends JFrame implements ActionListener {
 	private void resetData() {
 
 		ArrayList<Car> temp = new ArrayList<Car>();
-		temp = cfm.readCars("/Users/workspace/Final_Project/src/project/vehicle/data/" + dealerName);
+		temp = cfm.readCars("src/project/vehicle/data/" + dealerName);
 		CarSearchManager csm = new CarSearchManager(temp);
 		data = csm.listCarsByDealer(dealerName);
 		refreshData();
@@ -449,13 +449,11 @@ public class Screen_CarList extends JFrame implements ActionListener {
                       String vin = (String) table.getValueAt(deleteIndex, 1);
                       System.out.println(vin);
                       ArrayList<Car> tempDelete = new ArrayList<Car>();
-                      tempDelete = cfm.readCars(
-                                      "/Users/workspace/Final_Project/src/project/vehicle/data/"
-                                                      + dealerName);
+                      tempDelete = cfm.readCars("src/project/vehicle/data/"+ dealerName);
                       CarDataManager cdm = new CarDataManager(tempDelete);
 
                       cdm.deleteCarByVIN(vin);
-                      cfm.writeCars(tempDelete,"/Users/workspace/Final_Project/src/project/vehicle/data/"+ dealerName);
+                      cfm.writeCars(tempDelete,"src/project/vehicle/data/"+ dealerName);
                       new Screen_CarList(tempDelete, dealerName);
 
               }
