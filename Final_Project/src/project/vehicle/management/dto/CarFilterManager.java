@@ -402,6 +402,7 @@ public class CarFilterManager
 
     public List<String> getPriceChoice()
     {
+    	int i = 0;
         List<String> priceList = new ArrayList<String>();
         priceList.add("Select");
         // TODO make the priceList changeable according to the other filter
