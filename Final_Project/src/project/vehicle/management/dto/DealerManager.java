@@ -37,6 +37,7 @@ public class DealerManager {
 				br.close();
 			}
 		}
+		Collections.sort(dealersNameList);
 		return dealersNameList;
 	}           
 }
