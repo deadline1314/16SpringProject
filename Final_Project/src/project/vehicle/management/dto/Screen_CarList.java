@@ -499,11 +499,12 @@ public class Screen_CarList extends JFrame implements ActionListener
 				JOptionPane.showMessageDialog(new JLabel(), "You must chose a car!", "Error",
 						JOptionPane.ERROR_MESSAGE);
 				
-			}
+			}else{
             Car c = new Car((String) dataFinal[test][1], dealerName, (String) dataFinal[test][2],
                     (Integer) dataFinal[test][3], (String) dataFinal[test][4], (String) dataFinal[test][5],
                     (String) dataFinal[test][6], (String) dataFinal[test][7], (Double) dataFinal[test][8]);
             Screen_ModifyRecord modifyScreen = new Screen_ModifyRecord(c, dealerName, data);
+        }
         }
 
         /*
