@@ -405,7 +405,29 @@ public class CarFilterManager
         List<String> priceList = new ArrayList<String>();
         priceList.add("Select");
         // TODO make the priceList changeable according to the other filter
-        priceList.addAll(priceListRange);
+        		Car tempCar;
+		while (i < tempCarList.size()) {
+			// add types to typeList
+			tempCar = tempCarList.get(i);
+
+			if (tempCar.getPrice() < 10000 && (!priceList.contains("0~10000")))
+				priceList.add("0~10000");
+			else if (tempCar.getPrice() >= 10001 && tempCar.getPrice() < 20000 && (!priceList.contains("10001~20000")))
+				priceList.add("10001~20000");
+			else if (tempCar.getPrice() >= 20001 && tempCar.getPrice() < 30000 && (!priceList.contains("20001~30000")))
+				priceList.add("20001~30000");
+			else if (tempCar.getPrice() >= 30001 && tempCar.getPrice() < 40000 && (!priceList.contains("30001~40000")))
+				priceList.add("30001~40000");
+			else if (tempCar.getPrice() >= 40001 && tempCar.getPrice() < 50000 && (!priceList.contains("40001~50000")))
+				priceList.add("40001~50000");
+			else if (tempCar.getPrice() >= 50001 && tempCar.getPrice() < 100000 && (!priceList.contains("50001~100000")))
+				priceList.add("50001~100000");
+			i++;
+		}
+		Collections.sort(priceList);
+		Collections.reverse(priceList);
+		priceList.add("Select");
+		Collections.reverse(priceList);
         return priceList;
     }
 
