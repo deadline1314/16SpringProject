@@ -86,8 +86,8 @@ public class Screen_AddRecord extends JFrame {
 		}
 		yearBox = new JComboBox<String>(yearList);
 
-		String[] Conditions = { "NEW", "USED", "CERTIFIED" };
-		conditionBox = new JComboBox<String>(Conditions);
+		String[] Conditions = { "new", "used", "certified"};
+		conditionBox = new JComboBox<String>(Conditons);
 
 	}
 
@@ -200,8 +200,8 @@ public class Screen_AddRecord extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
-	public void windowClosing(final WindowEvent e) {
-		this.dispose();
-	}
+//	public void windowClosing(final WindowEvent e) {
+//		this.dispose();
+//	}
 
 }

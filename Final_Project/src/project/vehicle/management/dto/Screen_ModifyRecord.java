@@ -99,7 +99,7 @@ public class Screen_ModifyRecord extends JFrame {
 		yearBox = new JComboBox<String>(yearList);
 		yearBox.setSelectedItem(car.getYear());
 
-		String[] Conditions = { "NEW", "USED", "CERTIFIED" };
+		String[] Conditions = { "new", "used", "certified" };
 		conditionBox = new JComboBox<String>(Conditions);
 		conditionBox.setSelectedItem(car.getCondition());
 
