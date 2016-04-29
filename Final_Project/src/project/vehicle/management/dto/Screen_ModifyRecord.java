@@ -208,7 +208,8 @@ public class Screen_ModifyRecord extends JFrame {
 		this.setLocationRelativeTo(null); // show in the center
 		this.setResizable(false);
 		this.setBackground(Color.white);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 
 	public void windowClosing(final WindowEvent e) {

@@ -197,11 +197,13 @@ public class Screen_AddRecord extends JFrame {
 		this.setLocationRelativeTo(null); // show in the center
 		this.setResizable(false);
 		this.setBackground(Color.white);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		//this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 
-//	public void windowClosing(final WindowEvent e) {
-//		this.dispose();
-//	}
+	public void windowClosing(final WindowEvent e) {
+		this.dispose();
+	}
 
 }
