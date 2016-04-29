@@ -87,7 +87,7 @@ public class Screen_AddRecord extends JFrame {
 		yearBox = new JComboBox<String>(yearList);
 
 		String[] Conditions = { "new", "used", "certified"};
-		conditionBox = new JComboBox<String>(Conditons);
+		conditionBox = new JComboBox<String>(Conditions);
 
 	}
 
